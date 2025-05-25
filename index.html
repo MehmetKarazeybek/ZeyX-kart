@@ -2,7 +2,7 @@
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="description" content="ZeyX'in Şık Dijital Kartviziti - Yazılım Geliştirici">
     <title>ZeyX | Dijital Kartvizit</title>
     <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -49,6 +49,7 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
         }
 
         body {
@@ -62,6 +63,8 @@
             overflow-x: hidden;
             transition: background 0.7s ease;
             position: relative;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
 
         .background-image {
@@ -75,13 +78,14 @@
             opacity: 0.3;
             filter: blur(8px);
             z-index: -1;
+            will-change: transform;
         }
 
         .card-container {
             perspective: 1500px;
             width: 100%;
             max-width: 420px;
-            margin: 20px;
+            margin: 15px;
         }
 
         .card {
@@ -90,18 +94,18 @@
             aspect-ratio: 3.5 / 2;
             background: linear-gradient(135deg, var(--card-gradient-start), var(--card-gradient-end));
             border-radius: 28px;
-            box-shadow: 0 25px 50px var(--shadow-color-dark), inset 0 0 20px var(--border-highlight);
+            box-shadow: 0 20px 40px var(--shadow-color-dark), inset 0 0 15px var(--border-highlight);
             transform-style: preserve-3d;
             transition: transform 0.9s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.4s ease;
-            cursor: pointer;
             color: var(--text-color-light);
-            padding: 30px;
+            padding: 25px;
             border: 1px solid rgba(255, 255, 255, 0.05);
+            touch-action: manipulation;
         }
 
         .card:hover {
             transform: rotateY(7deg) rotateX(7deg) scale(1.04);
-            box-shadow: 0 35px 70px rgba(0, 0, 0, 0.7), inset 0 0 25px rgba(255, 255, 255, 0.2);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.7), inset 0 0 20px rgba(255, 255, 255, 0.2);
         }
 
         .card-front, .card-back {
@@ -110,7 +114,7 @@
             height: 100%;
             backface-visibility: hidden;
             border-radius: 28px;
-            padding: 30px;
+            padding: 25px;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -129,63 +133,63 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
 
         .profile-img {
-            width: 110px;
-            height: 110px;
+            width: 100px;
+            height: 100px;
             border-radius: 50%;
-            border: 5px solid var(--accent-color);
+            border: 4px solid var(--accent-color);
             background-color: #333;
             background-size: cover;
             background-position: center;
-            margin-bottom: 18px;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+            margin-bottom: 15px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
             transition: transform 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
             object-fit: cover;
         }
 
         .card:hover .profile-img {
-            transform: scale(1.12);
+            transform: scale(1.1);
             border-color: #fff;
-            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
         }
 
         h1 {
             font-family: 'Lora', serif;
-            font-size: 32px;
+            font-size: 30px;
             font-weight: 700;
             color: var(--accent-color);
             margin: 0;
-            letter-spacing: 1.8px;
-            text-shadow: 0 3px 8px rgba(0, 0,0.3);
+            letter-spacing: 1.5px;
+            text-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
         }
 
         .job-title {
             font-family: 'Montserrat', sans-serif;
-            font-size: 16px;
+            font-size: 15px;
             color: var(--text-color-light);
-            margin-top: 8px;
+            margin-top: 6px;
             font-weight: 500;
-            letter-spacing: 0.7px;
+            letter-spacing: 0.6px;
             opacity: 0.9;
         }
 
         .contact-info {
-            margin-top: 20px;
-            line-height: 1.8;
-            font-size: 15px;
+            margin-top: 15px;
+            line-height: 1.7;
+            font-size: 14px;
             font-weight: 400;
             color: var(--text-color-light);
         }
 
         .contact-info p {
-            margin: 4px 0;
+            margin: 3px 0;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
+            gap: 8px;
         }
 
         .contact-info a {
@@ -200,38 +204,42 @@
         }
 
         .social-links {
-            margin-top: 25px;
+            margin-top: 20px;
             display: flex;
-            gap: 20px;
+            gap: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
         }
 
         .social-links a {
             color: var(--accent-color);
             text-decoration: none;
-            font-size: 17px;
+            font-size: 16px;
             font-weight: 600;
             display: inline-flex;
             align-items: center;
-            gap: 10px;
-            padding: 10px 20px;
-            border-radius: 18px;
+            gap: 8px;
+            padding: 8px 16px;
+            border-radius: 16px;
             background: rgba(218, 184, 65, 0.1);
             transition: all 0.3s ease;
-            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.25);
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
             border: 1px solid rgba(218, 184, 65, 0.2);
+            touch-action: manipulation;
+            min-width: 120px;
         }
 
         .social-links a:hover {
             background: var(--accent-color);
             color: var(--text-color-dark);
-            transform: translateY(-6px) scale(1.07);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+            transform: translateY(-4px) scale(1.05);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
             border-color: var(--accent-color);
         }
 
         .social-links img {
-            width: 22px;
-            height: 22px;
+            width: 20px;
+            height: 20px;
             filter: brightness(0) invert(1);
             transition: filter 0.3s ease;
         }
@@ -244,32 +252,33 @@
             background: rgba(255, 255, 255, 0.1);
             border: 1px solid rgba(255, 255, 255, 0.2);
             color: #fff;
-            padding: 9px 18px;
-            border-radius: 20px;
+            padding: 8px 16px;
+            border-radius: 18px;
             cursor: pointer;
-            font-size: 13px;
+            font-size: 12px;
             font-weight: 500;
             transition: all 0.3s ease;
-            position: absolute;
-            top: 20px;
-            right: 20px;
+            position: fixed;
+            top: 15px;
+            right: 15px;
             z-index: 10;
             backdrop-filter: blur(5px);
+            touch-action: manipulation;
         }
 
         .theme-toggle:hover {
             background: var(--accent-color);
             color: var(--text-color-dark);
-            transform: translateY(-4px);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.35);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.35);
         }
 
         .qr-code {
-            margin-top: 25px;
-            padding: 12px;
+            margin-top: 20px;
+            padding: 10px;
             background-color: #fff;
-            border-radius: 12px;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -280,8 +289,8 @@
         }
 
         .qr-code-text {
-            margin-top: 18px;
-            font-size: 15px;
+            margin-top: 15px;
+            font-size: 14px;
             color: var(--text-color-light);
             opacity: 0.95;
             font-weight: 400;
@@ -301,58 +310,116 @@
 
         @media (max-width: 480px) {
             .card-container {
-                max-width: 92%;
+                max-width: 90%;
+                margin: 10px;
             }
 
             .card {
-                padding: 25px;
+                padding: 20px;
+                border-radius: 20px;
             }
 
             h1 {
-                font-size: 28px;
+                font-size: 26px;
+                letter-spacing: 1.2px;
             }
 
             .job-title {
-                font-size: 14px;
+                font-size: 13px;
+                margin-top: 5px;
             }
 
             .contact-info {
-                font-size: 13px;
+                font-size: 12px;
+                margin-top: 12px;
             }
 
             .profile-img {
-                width: 95px;
-                height: 95px;
-                margin-bottom: 15px;
+                width: 90px;
+                height: 90px;
+                border-width: 3px;
+                margin-bottom: 12px;
             }
 
             .social-links {
-                gap: 15px;
+                gap: 12px;
+                margin-top: 15px;
             }
 
             .social-links a {
-                font-size: 15px;
-                padding: 8px 15px;
+                font-size: 14px;
+                padding: 7px 14px;
+                min-width: 100px;
             }
 
             .social-links img {
-                width: 20px;
-                height: 20px;
+                width: 18px;
+                height: 18px;
             }
 
             .theme-toggle {
-                padding: 7px 14px;
+                padding: 6px 12px;
                 font-size: 11px;
-                top: 15px;
-                right: 15px;
+                top: 10px;
+                right: 10px;
             }
 
             .qr-code {
-                padding: 10px;
+                padding: 8px;
+                margin-top: 15px;
+            }
+
+            .qr-code > canvas {
+                width: 120px !important;
+                height: 120px !important;
             }
 
             .qr-code-text {
+                font-size: 12px;
+                margin-top: 12px;
+            }
+
+            .card:hover {
+                transform: none;
+                box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7), inset 0 0 15px rgba(255, 255, 255, 0.2);
+            }
+
+            .card:hover .profile-img {
+                transform: scale(1.05);
+            }
+        }
+
+        @media (max-width: 360px) {
+            .card {
+                padding: 15px;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+
+            .job-title {
+                font-size: 12px;
+            }
+
+            .contact-info {
+                font-size: 11px;
+            }
+
+            .profile-img {
+                width: 80px;
+                height: 80px;
+            }
+
+            .social-links a {
                 font-size: 13px;
+                padding: 6px 12px;
+                min-width: 90px;
+            }
+
+            .qr-code > canvas {
+                width: 100px !important;
+                height: 100px !important;
             }
         }
     </style>
@@ -415,8 +482,9 @@
 
         // Kart çevirme efekti
         const card = $('#card');
-        card.on('click', function(e) {
+        card.on('click touchend', function(e) {
             if (!$(e.target).is('button, a, img, canvas')) {
+                e.preventDefault();
                 const isFlipped = $(this).css('transform').includes('matrix3d(-1,');
                 $(this).css('transform', isFlipped ? 'rotateY(0deg)' : 'rotateY(180deg)');
             }
@@ -455,8 +523,8 @@
 
             qrCodeInstance = new QRCode(qrCodeDiv, {
                 text: 'https://www.instagram.com/gencbiryazilimcii/',
-                width: 140,
-                height: 140,
+                width: window.innerWidth <= 480 ? 120 : 140,
+                height: window.innerWidth <= 480 ? 120 : 140,
                 colorDark: colorDark,
                 colorLight: colorLight,
                 correctLevel: QRCode.CorrectLevel.H
@@ -466,11 +534,19 @@
         // İlk yüklemede QR kod oluştur
         generateQRCode();
 
+        // Pencere yeniden boyutlandırıldığında QR kodunu güncelle
+        window.addEventListener('resize', generateQRCode);
+
         // Analitik (görüntülenme sayacı)
         let viewCount = localStorage.getItem('cardViews') || 0;
         viewCount++;
         localStorage.setItem('cardViews', viewCount);
         console.log(`Dijital Kartvizit ${viewCount} kez görüntülendi.`);
+
+        // Tilt efektini mobilde devre dışı bırak
+        if (/Mobi|Android/i.test(navigator.userAgent)) {
+            card.removeAttr('data-tilt');
+        }
     </script>
 </body>
 </html>
